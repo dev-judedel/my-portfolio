@@ -189,10 +189,9 @@ img {
 .nav-logo a {
   font-family: var(--font-display);
   font-size: 1.8rem;
-  color: var(--color-navy);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--color-navy-dark);
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .nav-menu {
@@ -495,33 +494,60 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-xl);
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .project-card {
   background-color: rgba(245, 240, 232, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   padding: var(--space-xl);
-  transition: var(--transition-base);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-beige-medium) 0%, var(--color-beige) 100%);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
   border-color: var(--color-beige-dark);
 }
 
 .project-icon {
-  width: 60px;
-  height: 60px;
-  background-color: var(--color-beige);
-  border-radius: 12px;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--color-beige) 0%, var(--color-beige-medium) 100%);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--color-navy);
   margin-bottom: var(--space-md);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+}
+
+.project-card:hover .project-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, var(--color-beige-medium) 0%, var(--color-beige-dark) 100%);
 }
 
 .project-tag {
@@ -539,12 +565,17 @@ img {
   font-size: 1.5rem;
   margin-bottom: var(--space-md);
   color: var(--color-white);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .project-description {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.8;
   margin-bottom: var(--space-lg);
+  font-size: 0.95rem;
+  min-height: 90px;
 }
 
 .project-tech {
@@ -826,16 +857,34 @@ img {
   background: linear-gradient(135deg, var(--color-white) 0%, var(--color-beige) 100%);
   border-radius: 20px;
   padding: var(--space-2xl);
-  box-shadow: var(--shadow-2xl);
+  box-shadow: var(--shadow-lg);
   position: sticky;
   top: 100px;
-  border: 2px solid rgba(27, 54, 93, 0.1);
+  border: 2px solid transparent;
   transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.contact-card:hover::before {
+  transform: scaleX(1);
 }
 
 .contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--color-navy-light);
 }
 
 .contact-card-inner {
@@ -845,7 +894,7 @@ img {
 .contact-card-icon {
   width: 90px;
   height: 90px;
-  background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -853,8 +902,14 @@ img {
   margin: 0 auto var(--space-lg);
   font-size: 2.5rem;
   color: var(--color-beige-light);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-md);
   position: relative;
+  transition: all var(--transition-base);
+}
+
+.contact-card:hover .contact-card-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy-light) 100%);
 }
 
 .contact-card-icon::before {
