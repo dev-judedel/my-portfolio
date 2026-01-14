@@ -1277,19 +1277,27 @@ img {
   .hero-container {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: var(--space-2xl);
   }
 
   .hero-image-wrapper {
     order: -1;
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
   }
 
   .hero-cta {
     justify-content: center;
+    flex-direction: row;
+    gap: var(--space-sm);
   }
 
   .hero-stats {
     justify-content: center;
+    gap: var(--space-lg);
+  }
+
+  .hero-description {
+    max-width: 100%;
   }
 
   .footer-grid {
@@ -1309,7 +1317,7 @@ img {
 
   .contact-wrapper {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: var(--space-2xl);
   }
 
   .contact-card {
@@ -1320,78 +1328,448 @@ img {
   .contact-content {
     padding-right: 0;
   }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .section {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-2xl);
+  }
 }
 
 @media (max-width: 768px) {
+  /* Enhanced Mobile Navigation */
   .nav-menu {
     position: fixed;
     top: 70px;
     left: 0;
     right: 0;
-    background-color: var(--color-beige);
+    background-color: var(--color-beige-light);
     flex-direction: column;
     padding: var(--space-lg);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-2xl);
     display: none;
     gap: var(--space-md);
+    border-top: 2px solid var(--color-navy);
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .nav-menu.active {
     display: flex;
   }
 
+  .nav-link {
+    padding: var(--space-sm);
+    text-align: center;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: all var(--transition-base);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: var(--color-navy);
+    color: var(--color-beige-light);
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
   .mobile-menu-toggle {
     display: block;
+    font-size: 1.5rem;
+    padding: var(--space-sm);
+    transition: transform var(--transition-base);
   }
 
+  .mobile-menu-toggle:active {
+    transform: scale(0.95);
+  }
+
+  /* Hero Section Mobile */
   .hero-section {
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-2xl) var(--space-md);
+    min-height: auto;
   }
 
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 5vw, 1.3rem);
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  /* Sections Mobile */
   .section {
     padding: var(--space-2xl) var(--space-md);
   }
 
-  .hero-stats {
-    flex-direction: column;
-    gap: var(--space-md);
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
   }
 
+  .section-title {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  /* Hero Stats Mobile */
+  .hero-stats {
+    flex-direction: row;
+    gap: var(--space-lg);
+    padding-top: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  /* CTA Buttons Mobile */
   .hero-cta {
     flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
   }
 
   .btn {
     width: 100%;
     text-align: center;
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
   }
 
+  .btn-large {
+    padding: 1.1rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  /* Cards Mobile */
   .projects-grid,
   .skills-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .project-card,
+  .skill-card {
+    padding: var(--space-lg);
+  }
+
+  .project-icon,
+  .skill-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+  }
+
+  .project-title,
+  .skill-name {
+    font-size: 1.3rem;
+  }
+
+  .project-description,
+  .skill-description {
+    font-size: 0.9rem;
+    min-height: auto;
+  }
+
+  /* Contact Section Mobile */
+  .contact-heading {
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .contact-heading::after {
+    width: 80%;
+  }
+
+  .contact-text {
+    font-size: 1rem;
   }
 
   .contact-methods {
-    gap: var(--space-md);
+    gap: var(--space-sm);
   }
 
   .contact-method {
     flex-direction: row;
+    padding: var(--space-md);
+  }
+
+  .contact-method-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+
+  .contact-method-details h4 {
+    font-size: 0.75rem;
+  }
+
+  .contact-method-details a {
+    font-size: 1rem;
+  }
+
+  .contact-card {
+    padding: var(--space-xl);
+  }
+
+  .contact-card-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+
+  .highlight-text {
+    font-size: 2.5rem;
+  }
+
+  /* Footer Mobile */
+  .footer {
+    padding: var(--space-2xl) var(--space-md) var(--space-md);
+  }
+
+  .footer-grid {
+    gap: var(--space-lg);
+  }
+
+  .footer-title {
+    font-size: 1.5rem;
+  }
+
+  .footer-subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* Touch Improvements */
+  .btn,
+  .nav-link,
+  .contact-method,
+  .project-card,
+  .skill-card,
+  .contact-card {
+    -webkit-tap-highlight-color: rgba(27, 54, 93, 0.1);
+    touch-action: manipulation;
+  }
+
+  /* Scroll Indicator Mobile */
+  .scroll-indicator {
+    bottom: var(--space-md);
+  }
+
+  .scroll-arrow {
+    width: 25px;
+    height: 40px;
   }
 }
 
 @media (max-width: 480px) {
+  /* Extra Small Mobile Devices */
   .hero-image {
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
+    border-width: 6px;
   }
 
   .hero-image-glow {
-    width: 260px;
-    height: 260px;
+    width: 240px;
+    height: 240px;
+  }
+
+  .hero-sparkle {
+    width: 15px;
+    height: 15px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 10vw, 2.5rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.95rem, 5vw, 1.2rem);
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.85rem;
+  }
+
+  .stat-item {
+    min-width: 100px;
   }
 
   .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  .hero-stats {
+    gap: var(--space-md);
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+  }
+
+  .project-icon,
+  .skill-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+  }
+
+  .project-title,
+  .skill-name {
+    font-size: 1.2rem;
+  }
+
+  .project-description,
+  .skill-description {
+    font-size: 0.875rem;
+  }
+
+  .contact-method {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .contact-method-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+
+  .contact-method-details h4 {
+    font-size: 0.7rem;
+  }
+
+  .contact-method-details a {
+    font-size: 0.95rem;
+  }
+
+  .contact-card {
+    padding: var(--space-lg);
+  }
+
+  .contact-card-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 1.75rem;
+  }
+
+  .contact-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .highlight-text {
     font-size: 2rem;
+  }
+
+  .small-text {
+    font-size: 0.85rem;
+  }
+
+  .contact-card h4 {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 0.9rem 1.25rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-large {
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .nav-logo a {
+    font-size: 1.5rem;
+  }
+
+  .footer-title {
+    font-size: 1.3rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .scroll-top-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+    bottom: var(--space-md);
+    right: var(--space-md);
+  }
+
+  /* Improve spacing for small screens */
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .section {
+    padding: var(--space-xl) var(--space-sm);
+  }
+
+  .hero-section {
+    padding: var(--space-xl) var(--space-sm);
   }
 }
