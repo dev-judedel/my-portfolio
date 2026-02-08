@@ -156,6 +156,7 @@ img {
   z-index: -1;
 }
 
+
 /* ===================================
    Navigation
    =================================== */
@@ -309,8 +310,16 @@ img {
 
 .hero-cta {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   margin-bottom: var(--space-xl);
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.hero-cta .btn {
+  white-space: nowrap;
+  padding: 0.9rem 1.6rem;
+  font-size: 0.8rem;
 }
 
 .hero-stats {
